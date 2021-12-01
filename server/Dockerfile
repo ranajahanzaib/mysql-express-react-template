@@ -1,12 +1,11 @@
-FROM node:12
+FROM node:10-alpine
 
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /server
+WORKDIR /server
 
-COPY package.json /app
-COPY package-lock.json /app
-
-COPY . /app
+COPY package.json /server
+COPY package-lock.json /server
+COPY . /server
 
 RUN npm ci
 
