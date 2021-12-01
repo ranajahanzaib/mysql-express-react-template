@@ -1,0 +1,23 @@
+{
+  "name": "mysql-express-react-template",
+  "version": "1.0.0",
+  "description": "[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node console.log.js && echo \"Docker Compose will bring services up in 5 seconds\n\n\" && sleep 5 && docker-compose up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranajahanzaib/mysql-express-react-template.git"
+  },
+  "keywords": [],
+  "author": "Rana Jahanzaib (https://ranajahanzaib.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ranajahanzaib/mysql-express-react-template/issues"
+  },
+  "homepage": "https://github.com/ranajahanzaib/mysql-express-react-template#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
