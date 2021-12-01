@@ -8,7 +8,7 @@ Instantly create MySQL-ERN based projects with this template.
 
 ```sh
 npm install
-npm start # Starts docker-compse services
+npm start # Starts docker-compose services
 ```
 
 ## Contributing
