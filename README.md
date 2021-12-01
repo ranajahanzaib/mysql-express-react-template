@@ -34,6 +34,33 @@ Use `npm start` command to run `docker-compose` services.
 npm start
 ```
 
+### Step 5: Test
+
+With default settings, your application is configured as:
+
+<table border>
+  <tr>
+    <th>Services</th>
+    <th>Address</th>
+  </tr>
+  <tr>
+    <td>Express</td>
+    <td><a href="http://localhost:5000">http://localhost:5000</a></td>
+  </tr>
+  <tr>
+    <td>React</td>
+    <td><a href="http://localhost:3001">http://localhost:3001</a></td>
+  </tr>
+  <tr>
+    <td>MySQL</td>
+    <td><a href="http://localhost:3310">http://localhost:3310</a></td>
+  </tr>
+  <tr>
+    <td>phpMyAdmin</td>
+    <td><a href="http://localhost:8585">http://localhost:8585</a></td>
+  </tr>
+</table>
+
 ## Contributing
 
 We'd love to accept your patches and contributions to this project. There are just a few guidelines you need to follow.
