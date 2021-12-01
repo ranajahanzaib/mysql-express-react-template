@@ -14,7 +14,11 @@ Click **Use this template** button from the top-right corner to instantly create
 
 Or, Follow this [Installation Guide](./INSTALL.md).
 
-### Step 2: Install Dependencies
+### Step 2: Rename .env.example to .env
+
+Docker needs the `.env` file to configure the MySQL-ERN containers. Please, make sure that you rename `.env.example` to `.env`
+
+### Step 3: Install Dependencies
 
 Make sure you're inside the root of repository to install required dependencies.
 
@@ -22,7 +26,7 @@ Make sure you're inside the root of repository to install required dependencies.
 npm install
 ```
 
-### Step 3: Run
+### Step 4: Run
 
 Use `npm start` command to run `docker-compose` services.
 
