@@ -61,6 +61,8 @@ With default settings, your application is configured as:
   </tr>
 </table>
 
+Update the port configurations in the `.env` file with your own settings, if you need to.
+
 ## Contributing
 
 We'd love to accept your patches and contributions to this project. There are just a few guidelines you need to follow.
