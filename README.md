@@ -4,6 +4,13 @@
 
 Instantly create MySQL-ERN based projects with this template.
 
+## Get Started
+
+```sh
+npm install
+npm start # Starts docker-compse services
+```
+
 ## Contributing
 
 We'd love to accept your patches and contributions to this project. There are just a few guidelines you need to follow.
