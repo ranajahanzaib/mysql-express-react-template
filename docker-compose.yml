@@ -1,0 +1,67 @@
+version: "3"
+
+# Variables
+x-common-variables: &common-variables
+  env_file: "{{.env}}"
+
+services:
+  mysqldb: # MySQL Container
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      # env_file: ./.env
+      MYSQL_HOST: "${MYSQL_HOST}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_USER_PASSWORD: "${MYSQL_USER_PASSWORD}"
+      MYSQL_ROOT_USER: "${MYSQL_ROOT_USER}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_INTERNAL_PORT: "${MYSQL_INTERNAL_PORT}"
+      MYSQL_EXTERNAL_PORT: "${MYSQL_EXTERNAL_PORT}"
+    ports:
+      - "${MYSQL_EXTERNAL_PORT}:${MYSQL_INTERNAL_PORT}"
+    restart: unless-stopped
+    volumes:
+      - ./db/sample.sql:/docker-entrypoint-initdb.d/sample.sql
+  phpmyadmin: # phpMyAdmin Container
+    depends_on:
+      - mysqldb
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysqldb
+    links:
+      - mysqldb:mysqldb
+    ports:
+      - "${PHPMYADMIN_EXTERNAL_PORT}:${PHPMYADMIN_INTERNAL_PORT}"
+    restart: always
+  server: # Express Server Container
+    build: ./server
+    container_name: express
+    depends_on:
+      - mysqldb
+    environment:
+      <<: *common-variables
+      MYSQL_HOST_IP: mysqldb
+      PORT: "${EXPRESS_INTERNAL_PORT}"
+    ports:
+      - "${EXPRESS_EXTERNAL_PORT}:${EXPRESS_INTERNAL_PORT}"
+    volumes:
+      - ./server:/app
+    links:
+      - mysqldb
+    command: npm start
+  app: # React App Container
+    build: ./app
+    container_name: react
+    environment:
+      <<: *common-variables
+      NODE_PATH: src
+      PORT: "${REACT_INTERNAL_PORT}"
+    ports:
+      - "${REACT_EXTERNAL_PORT}:${REACT_INTERNAL_PORT}"
+    volumes:
+      - ./app/src:/app/src
+    links:
+      - server
+    command: npm start
